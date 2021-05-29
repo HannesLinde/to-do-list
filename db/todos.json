@@ -1,12 +1,6 @@
 {
   "todos": [
     {
-      "title": "sadsad",
-      "content": "sadasd",
-      "createdAt": "2021-05-29T09:19:42.471Z",
-      "id": 1
-    },
-    {
       "title": "Another ToDo",
       "content": "Let us add another To Do and see what will be logged.",
       "createdAt": "2021-05-29T13:28:39.346Z",

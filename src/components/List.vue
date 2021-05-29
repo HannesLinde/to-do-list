@@ -17,7 +17,7 @@
       <div>{{ todo.content }}</div>
       <div class="flex justify-end">
         <button
-          @click="log"
+          @click="deleteToDo"
           class="bg-pink-400 hover:bg-pink-100 border border-black rounded-md px-2"
         >
           Delete this To Do
@@ -38,7 +38,6 @@ export default Vue.extend({
     };
   },
   async mounted() {
-    console.log("load list");
     this.listToDos();
   },
   methods: {
@@ -46,6 +45,14 @@ export default Vue.extend({
       const response = await axios.get("http://localhost:3000/todos");
       this.todos = response.data;
       console.log(response.data);
+    },
+    async deleteToDo() {
+      const id = 1;
+      const response = await axios.delete(
+        "http://localhost:3000/todos/" + `${id}`
+      );
+      console.log(response);
+      return "Message deleted";
     },
     log() {
       console.log(this.todos);
