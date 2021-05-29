@@ -1,10 +1,3 @@
 {
-  "todos": [
-    {
-      "title": "Another ToDo",
-      "content": "Let us add another To Do and see what will be logged.",
-      "createdAt": "2021-05-29T13:28:39.346Z",
-      "id": 2
-    }
-  ]
+  "todos": []
 }

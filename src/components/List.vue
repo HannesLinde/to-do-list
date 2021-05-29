@@ -1,12 +1,19 @@
 <template>
   <div class="flex flex-col space-y-4">
-    <h2 class="text-2xl">All my To Dos</h2>
+    <h2 class="text-2xl">Open To Dos</h2>
     <div v-if="todos.length == 0">Nothing to do. Whooohooo!</div>
     <div
       v-for="todo in todos"
       :key="todo.id"
       class="flex flex-col space-y-2 bg-green-400 border border-gray-400 p-4 rounded-xl"
     >
+      <div
+        v-if="deletionConfirmation"
+        class="bg-red-400 cursor-pointer"
+        @click="deleteToDo()"
+      >
+        Click here to confirm deletion.
+      </div>
       <div class="flex justify-between">
         <div class="text-xl">{{ todo.title }}</div>
         <div class="text-gray-800 text-sm">
@@ -17,17 +24,17 @@
       <div>{{ todo.content }}</div>
       <div class="flex justify-end">
         <button
-          @click="deleteToDo"
+          @click="setId(todo)"
           class="bg-pink-400 hover:bg-pink-100 border border-black rounded-md px-2"
         >
-          Delete this To Do
+          Done/Delete
         </button>
       </div>
     </div>
   </div>
 </template>
 
-<script lang="ts">
+<script lang="">
 import Vue from "vue";
 import axios from "axios";
 
@@ -35,10 +42,18 @@ export default Vue.extend({
   data() {
     return {
       todos: [],
+      selectedToDo: { id: -1 },
+      deletionConfirmation: false,
     };
   },
   async mounted() {
     this.listToDos();
+  },
+  computed: {
+    computeDeletion() {
+      this.deleteToDo();
+      return this.todos;
+    },
   },
   methods: {
     async listToDos() {
@@ -46,16 +61,16 @@ export default Vue.extend({
       this.todos = response.data;
       console.log(response.data);
     },
+    setId(todo) {
+      this.selectedToDo.id = todo.id;
+      console.log(this.selectedToDo.id);
+      this.deleteToDo();
+    },
     async deleteToDo() {
-      const id = 1;
       const response = await axios.delete(
-        "http://localhost:3000/todos/" + `${id}`
+        "http://localhost:3000/todos/" + `${this.selectedToDo.id}`
       );
       console.log(response);
-      return "Message deleted";
-    },
-    log() {
-      console.log(this.todos);
     },
   },
 });

@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col place-items-center space-y-4">
+  <div class="flex flex-col space-y-4">
     <h2 class="text-2xl">Create New To Do</h2>
     <form @submit.prevent="submit" class="flex flex-col space-y-2">
       <input
@@ -9,19 +9,21 @@
         v-model="title"
         class="bg-yellow-100 text-center border border-gray-400 rounded-md"
       />
-      <input
-        type="text"
+      <textarea
         name="content"
         placeholder="Content To Do"
         v-model="content"
         class="bg-yellow-100 text-center border border-gray-400 rounded-md"
+        rows="5"
       />
-      <button
-        type="submit"
-        class="bg-yellow-500 hover:bg-yellow-100 border border-gray-200 hover:border-gray-400 rounded-md px-4"
-      >
-        Save
-      </button>
+      <div class="flex justify-center">
+        <button
+          type="submit"
+          class="bg-yellow-500 hover:bg-yellow-100 border border-gray-200 hover:border-gray-400 rounded-md px-4"
+        >
+          Save
+        </button>
+      </div>
     </form>
   </div>
 </template>

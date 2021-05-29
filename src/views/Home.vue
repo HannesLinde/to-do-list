@@ -6,15 +6,29 @@
 </template>
 
 <script lang="ts">
-import { Component, Vue } from "vue-property-decorator";
+import Vue from "vue";
+import axios from "axios";
 import Form from "@/components/Form.vue";
 import List from "@/components/List.vue";
 
-@Component({
+export default Vue.extend({
+  methods: {
+    data() {
+      return {
+        id: "",
+      };
+    },
+    /* async deleteToDo() {
+      const response = await axios.delete(
+        "http://localhost:3000/todos/" + `${this.id}`
+      );
+      console.log(response);
+      return "Message deleted";
+    }, */
+  },
   components: {
     Form,
     List,
   },
-})
-export default class Home extends Vue {}
+});
 </script>
