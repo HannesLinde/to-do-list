@@ -1,6 +1,7 @@
 <template>
-  <div id="app">
-    <router-view />
+  <div>
+    <h2 class="text-2xl">Create New To Do</h2>
+    <input type="text" placeholder="Title" />
   </div>
 </template>
 

@@ -1,6 +1,6 @@
 <template>
-  <div id="app">
-    <router-view />
+  <div>
+    <h2 class="text-2xl">All my To Dos</h2>
   </div>
 </template>
 
