@@ -1,5 +1,5 @@
 <template>
-  <div class="home">
+  <div class="flex flex-col space-y-8 max-w-screen-sm mx-auto">
     <Form />
     <List />
   </div>

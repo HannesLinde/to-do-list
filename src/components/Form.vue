@@ -1,23 +1,20 @@
 <template>
-  <div>
+  <div class="flex flex-col place-items-center space-y-4">
     <h2 class="text-2xl">Create New To Do</h2>
-    <form
-      @submit.prevent="submit"
-      class="flex flex-col place-items-center space-y-4"
-    >
+    <form @submit.prevent="submit" class="flex flex-col space-y-2">
       <input
         type="text"
         name="title"
         placeholder="Title To Do"
         v-model="title"
-        class="bg-yellow-100 text-center w-1/2 border border-gray-400 rounded-md"
+        class="bg-yellow-100 text-center border border-gray-400 rounded-md"
       />
       <input
         type="text"
         name="content"
         placeholder="Content To Do"
         v-model="content"
-        class="bg-yellow-100 text-center w-1/2 border border-gray-400 rounded-md"
+        class="bg-yellow-100 text-center border border-gray-400 rounded-md"
       />
       <button
         type="submit"
