@@ -50,6 +50,7 @@ export default Vue.extend({
           createdAt: now,
         });
         console.log(response);
+        this.$router.push("/");
       } catch (error) {
         console.log("Sorry, an error occured: " + error);
       }
