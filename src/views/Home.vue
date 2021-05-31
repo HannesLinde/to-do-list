@@ -2,7 +2,7 @@
   <div class="flex flex-col space-y-8 max-w-screen-sm mx-auto">
     <router-link
       to="/create-to-do"
-      class="text-2xl bg-yellow-400 rounded-xl p-8"
+      class="text-2xl bg-yellow-400 rounded-xl px-8 py-4 text-center"
       >Create new To Do</router-link
     >
     <List />

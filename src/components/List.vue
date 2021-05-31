@@ -1,11 +1,11 @@
 <template>
-  <div class="flex flex-col space-y-4">
+  <div class="flex flex-col place-items-center space-y-4">
     <h2 class="text-2xl">Open To Dos</h2>
     <div v-if="todos.length == 0">Nothing to do. Whooohooo!</div>
     <div
       v-for="todo in todos"
       :key="todo.id"
-      class="flex flex-col space-y-2 bg-green-400 border border-gray-400 p-4 rounded-xl"
+      class="flex flex-col w-full space-y-2 bg-green-400 border border-gray-400 p-4 rounded-xl"
     >
       <div
         v-if="deletionConfirmation"
@@ -24,7 +24,7 @@
       <div>{{ todo.content }}</div>
       <div class="flex justify-end">
         <button
-          @click="setId(todo)"
+          @click="setIdAndDelete(todo)"
           class="bg-pink-400 hover:bg-pink-100 border border-black rounded-md px-2"
         >
           Done/Delete
@@ -61,7 +61,7 @@ export default Vue.extend({
       this.todos = response.data;
       console.log(response.data);
     },
-    setId(todo) {
+    setIdAndDelete(todo) {
       this.selectedToDo.id = todo.id;
       console.log(this.selectedToDo.id);
       this.deleteToDo();

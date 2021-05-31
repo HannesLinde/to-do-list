@@ -12,17 +12,17 @@ yarn install
 yarn serve
 ```
 
+### Run json-server
+
+```
+yarn serve:json
+```
+
 ### Compiles and minifies for production
 
 ```
 yarn build
 
-```
-
-### Run json-server
-
-```
-yarn serve:json
 ```
 
 ### Lints and fixes files
