@@ -7,8 +7,10 @@
         name="title"
         placeholder="Title To Do"
         v-model="title"
+        @blur="titleEdited = true"
         class="bg-yellow-100 text-center border border-gray-400 rounded-md"
       />
+      <div v-if="titleError" class="text-red-500">{{ titleError }}</div>
       <textarea
         name="content"
         placeholder="Content To Do"
@@ -38,11 +40,19 @@ export default Vue.extend({
     return {
       title: "",
       content: "",
+      titleEdited: false,
     };
   },
   methods: {
+    validate() {
+      this.titleEdited = true;
+      if (this.titleError) return;
+      return true;
+    },
     async submit() {
+      if (!this.validate()) return;
       console.log("submit");
+
       try {
         const response = await axios.post("http://localhost:3000/todos", {
           title: this.title,
@@ -53,6 +63,15 @@ export default Vue.extend({
         this.$router.push("/");
       } catch (error) {
         console.log("Sorry, an error occured: " + error);
+      }
+    },
+  },
+  computed: {
+    titleError() {
+      if (!this.titleEdited || this.title.length >= 1) {
+        return "";
+      } else {
+        return "Your To Do needs a title. Please enter one in the field above";
       }
     },
   },
