@@ -65,6 +65,7 @@ export default Vue.extend({
       this.selectedToDo.id = todo.id;
       console.log(this.selectedToDo.id);
       this.deleteToDo();
+      this.listToDos();
     },
     async deleteToDo() {
       const response = await axios.delete(
